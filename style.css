@@ -1,0 +1,101 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Marcellus', serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    /* ADD a new, subtle background */
+    background: radial-gradient(ellipse at center, #0a0e2a 0%, #000000 100%);
+}
+
+.book{width:80vw;max-width:900px;height:650px;position:relative;perspective:2500px;transition: all 1.5s cubic-bezier(0.65, 0, 0.35, 1);}
+
+/* Center the book when it's closed */
+.book:not(.open){width:40vw;max-width:450px;transition: all 1.5s cubic-bezier(0.65, 0, 0.35, 1);}
+
+/* Cover Styling & Animation */
+.book-cover{position:absolute;width:100%;height:100%;background-image:url(book-cover-bg.png);background-size:cover;background-position:center;border-radius:4px 8px 8px 4px;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer;transform-origin:left center;transition:transform 1.5s cubic-bezier(.65,0,.35,1);z-index:100}
+.book-cover.flipped{transform:rotateY(-180deg)}
+
+/* Pages Container Styling & Animation */
+.pages-container{width:100%;height:100%;position:absolute;display:flex;transform:scale(.9);opacity:0;pointer-events:none;transition:transform 1s ease,opacity 1s ease}
+.book.open .pages-container{transform:scale(1);opacity:1;pointer-events:auto}
+
+/* Page Structure */
+.page {
+    width: 50%;
+    height: 100%;
+    background: #fdf6e3; /* Fallback color */
+    background: linear-gradient(to right, #e9e4d4 0%, #fdf6e3 10%, #fdf6e3 90%, #e9e4d4 100%);
+    /* ... other styles ... */
+}
+.page-left{box-shadow:inset -5px 0 15px -5px rgba(0,0,0,.2)}
+.page-right{position:absolute;left:50%;transform-style:preserve-3d;transform-origin:left center;transition:transform 1.5s cubic-bezier(.65,0,.35,1)}
+.page-right.flipped{transform:rotateY(-180deg)}
+#inputPage{z-index:10}
+#storyPage1{z-index:9}
+
+/* Page Faces */
+.page-front,.page-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:2rem 3rem;box-sizing:border-box;display:flex;flex-direction:column}
+.page-back{transform:rotateY(180deg);background:#f7f0d8}
+
+/* Content Styling */
+h2{color:#5c543e;border-bottom:1px solid #d1c9b4;padding-bottom:.5rem}
+p{font-size:.9rem;color:#6d6652;line-height:1.5}
+textarea{flex-grow:1;background:transparent;border:none;resize:none;font-family:'Marcellus',serif;font-size:1.1rem;color:#333;margin-top:1rem}
+textarea:focus{outline:none}
+button{margin-top:1rem;padding:.8rem 1.5rem;border:1px solid #5c543e;background:#5c543e;color:#fdf6e3;font-family:'Marcellus',serif;font-size:1rem;cursor:pointer;transition:all .3s ease}
+button:hover{background:#fdf6e3;color:#5c543e}
+.secondary-btn{background:none;color:#5c543e;border:1px solid #d1c9b4;margin:.2rem;padding:.5rem;flex-grow:1}
+.secondary-btn:hover{background:#e9e2cf}
+.input-options{display:flex;align-items:center;gap:10px;margin-top:1rem}
+#pageCountSelect{background:transparent;border:1px solid #d1c9b4;border-radius:4px;padding:5px;font-family:'Marcellus',serif}
+.story-page-face {
+    font-family: 'Cormorant Garamond', serif; /* New story font */
+    font-size: 1.1rem; /* Slightly larger for this font */
+    line-height: 1.7;
+    color: #333;
+    overflow: hidden;
+}
+.story-page-face.left-spread{box-shadow:inset 5px 0 15px -5px rgba(0,0,0,.1)}
+.story-page-face.right-spread{box-shadow:inset -5px 0 15px -5px rgba(0,0,0,.1)}
+.story-text-content{flex-grow:1;overflow:hidden}
+.story-actions{display:none;flex-shrink:0;justify-content:center;padding-top:1rem;border-top:1px solid #d1c9b4;flex-wrap:wrap}
+
+/* Keyframe Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes moveLeft {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-20px); }
+}
+
+/* Star Styles */
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: moveLeft 60s infinite linear;
+    z-index: -1; /* Ensure stars are behind the book */
+}
+
+.star.small { width: 1px; height: 1px; }
+.star.medium { width: 2px; height: 2px; }
+.star.large { width: 3px; height: 3px; }
+
+/* Nebula Styles */
+.nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    mix-blend-mode: screen;
+    animation: float 40s infinite ease-in-out;
+    z-index: -2; /* Ensure nebulas are behind stars */
+}

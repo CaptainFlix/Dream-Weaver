@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dream Weaver 🌌</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <body>
+<div id="stars-container"></div>
+<div id="nebulas-container"></div>
+
+    <div class="book" id="theBook">
+        <div class="book-cover" id="bookCover"></div>
+
+        <div class="pages-container" id="pagesContainer">
+            <div class="page page-left"></div>
+
+            <div class="page page-right" id="inputPage">
+                <div class="page-front">
+                    <h2>Whisper Your Dream</h2>
+                    <p>The Dream Weaver works best with fragments. Don't worry about full sentences or a perfect story, just a few keywords, emotions that linger from your dream.</p>
+                    <textarea id="dreamInput" placeholder="e.g., a clock with no hands..."></textarea>
+                    <div class="input-options">
+                        <label for="pageCountSelect">Length:</label>
+                        <select id="pageCountSelect">
+                            <option value="1">1 Page</option>
+                            <option value="2">2 Pages</option>
+                        </select>
+                    </div>
+                    <button id="weaveButton">Weave My Dream ✨</button>
+                </div>
+                <div class="page-back story-page-face left-spread">
+                    <div class="story-text-content" id="storyText1"></div>
+                    <div class="story-actions" id="actions1">
+                        <button class="secondary-btn back-btn">← New Dream</button>
+                        <button class="secondary-btn redo-btn">Weave Again</button>
+                        <button class="secondary-btn add-btn">Add to Story</button>
+                        <button class="secondary-btn save-btn">Save Story</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page page-right" id="storyPage2">
+                <div class="page-front story-page-face right-spread">
+                    <div class="story-text-content" id="storyText2"></div>
+                    <div class="story-actions" id="actions2">
+                         <button class="secondary-btn back-btn">← New Dream</button>
+                         <button class="secondary-btn redo-btn">Weave Again</button>
+                         <button class="secondary-btn add-btn">Add to Story</button>
+                         <button class="secondary-btn save-btn">Save Story</button>
+                    </div>
+                </div>
+                <div class="page-back"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
