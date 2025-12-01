@@ -17,7 +17,7 @@ app.post('/generate-story', async (req, res) => {
         // Get all possible inputs from the front-end
         const { dreamFragments, pageCount, existingStory, newFragments } = req.body;
         
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
         let prompt;
 
         // --- Logic to choose the right prompt ---
